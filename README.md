@@ -4,11 +4,11 @@ Data are summarised from the dataset: Human Activity Recognition Using Smartphon
 
 For each recorded feature means and standard deviations were provided. For each of these means were then calculated for each subject and activity. Resulting in the following variables:
 
-## Subject number (subject) and the activity name (Active_name)
+### Subject number (subject) and the activity name (Active_name)
 1. subject
 2. Activ_name
 
-## Measures variables. Corresspond to the original variables, but with means extracted for each activity by subject.
+### Measures variables. Corresspond to the original variables, but with means extracted for each activity by subject.
 3. tBodyAcc_mean_X
 4. tBodyAcc_mean_Y
 5. tBodyAcc_mean_Z
@@ -89,3 +89,7 @@ For each recorded feature means and standard deviations were provided. For each 
 80. fBodyBodyGyroJerkMag_std
 81. fBodyBodyGyroJerkMag_meanFreq
 
+
+# Running the script
+## Run run_analysis.R
+The script is fully self-contained, including data download, unzipping, and then the data processing. Simply execute the full script. At the end of this there will the tidy data file 'tidy_data.txt' located in the 'data' directory of your working directory.
