@@ -2,6 +2,8 @@
 
 Data are summarised from the dataset: Human Activity Recognition Using Smartphones Dataset - Version 1.0
 
+
+## Tidy data summary 
 For each recorded feature means and standard deviations were provided. For each of these means were then calculated for each subject and activity. Resulting in the following variables:
 
 ### Subject number (subject) and the activity name (Active_name)
