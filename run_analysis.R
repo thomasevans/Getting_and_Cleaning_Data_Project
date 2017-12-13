@@ -40,6 +40,20 @@ TrainDat <- cbind(TrainDat, TrainDatActiv)
 # Combine all
 AllDat <- rbind(TestDat, TrainDat)
 
+
+
+# Load subjects
+subjects_test  <- read.table("data/UCI HAR Dataset/test/subject_test.txt",
+                             header = FALSE)
+
+subjects_train  <- read.table("data/UCI HAR Dataset/train/subject_train.txt",
+                              header = FALSE)
+# Combine these
+subjects_all <- rbind(subjects_test,subjects_train)
+
+AllDat <- cbind.data.frame(AllDat, subjects_all)
+
+
 # 2. Extracts only the measurements on the mean and standard deviation for each measurement ---------
 # means <- rowMeans(AllDat[,c(1:561)])
 # SDs <- apply(AllDat[,c(1:561)], 1, sd)
@@ -59,6 +73,7 @@ features$V2[matches]
 # Keep only the variables included in above
 AllDatRequired <- AllDat[,matches]
 AllDatRequired$activ <- AllDat[,562]
+AllDatRequired$subject <- AllDat[,563]
 # 
 
 # 3. Name activities with descriptive activity names ------
@@ -80,25 +95,11 @@ varnames <- gsub("-", "_", varnames)
 varnames <- sub("\\()", "", varnames)
 
 # Label data frame
-names(AllDatRequired) <- c("Activ_num", varnames, "Activ_name")
+names(AllDatRequired) <- c("Activ_num", varnames,
+                           "subject", "Activ_name")
 
 
 #   5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject --------
-
-# Load subjects
-subjects_test  <- read.table("data/UCI HAR Dataset/test/subject_test.txt",
-                             header = FALSE)
-
-subjects_train  <- read.table("data/UCI HAR Dataset/train/subject_train.txt",
-                             header = FALSE)
-# Combine these
-subjects_all <- rbind(subjects_test,subjects_train)
-
-# Add to summary dataset
-AllDatRequired$subject <- subjects_all[,1]
-
-with(AllDatRequired,
-     table(subject, Activ_num))
 
 
 # Summarise data
